@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/START" android:title="START" />
+    <item android:id="@+id/END" android:title="END" />
+    <item android:id="@+id/CHECK" android:title="CHECK" />
+    <item android:id="@+id/SAVE" android:title="SAVE AS FILE" />
+    <item android:id="@+id/EMPTY" android:title="EMPTY" />
+</menu>
