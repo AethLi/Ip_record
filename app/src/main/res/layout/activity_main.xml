@@ -25,4 +25,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.percent.PercentFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <Button
+            android:id="@+id/CHECK"
+            android:text="CHECK"
+            android:background="@drawable/button_states"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="30%"
+            android:layout_gravity="start|center_vertical" />
+        <Button
+            android:id="@+id/SAVE"
+            android:text="SAVE"
+            android:background="@drawable/button_states"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="30%"
+            android:layout_gravity="center_horizontal|center_vertical" />
+        <Button
+            android:id="@+id/NOTHING"
+            android:text="NOTHING"
+            android:background="@drawable/button_states"
+            android:layout_height="wrap_content"
+            app:layout_widthPercent="30%"
+            android:layout_gravity="end|center_vertical" />
+    </android.support.percent.PercentFrameLayout>
+
 </android.support.constraint.ConstraintLayout>
