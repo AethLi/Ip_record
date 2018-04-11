@@ -12,9 +12,7 @@
         android:id="@+id/main_tb"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@drawable/toolbarcolor1"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/AlertDialog.AppCompat.Light"/>
+        />
 
     <com.nightonke.jellytogglebutton.JellyToggleButton
         android:id="@+id/main_jtb"
@@ -51,8 +49,8 @@
             app:layout_widthPercent="30%"
             android:layout_gravity="center_horizontal|center_vertical" />
         <Button
-            android:id="@+id/NOTHING"
-            android:text="NOTHING"
+            android:id="@+id/EMPTY"
+            android:text="EMPTY"
             android:background="@drawable/button_states"
             android:layout_height="wrap_content"
             app:layout_widthPercent="30%"

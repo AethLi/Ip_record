@@ -1,17 +1,17 @@
 package cn.aethli.ip_record;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.nightonke.jellytogglebutton.JellyToggleButton;
@@ -22,7 +22,7 @@ import java.util.Date;
 
 import static android.os.SystemClock.sleep;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Dbtools dt=null;
     private SQLiteDatabase sdb=null;
@@ -33,13 +33,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ConstraintLayout c=findViewById(R.id.main_constra);
+        Toolbar tb=findViewById(R.id.main_tb);
+        tb.setBackground(getDrawable(R.drawable.toolbarcolor1));
         c.setBackgroundColor(ContextCompat.getColor(this,R.color.backgroundPrimary));
+
+        (findViewById(R.id.CHECK)).setOnClickListener(this);
+        (findViewById(R.id.SAVE)).setOnClickListener(this);
+        (findViewById(R.id.EMPTY)).setOnClickListener(this);
+
         JellyToggleButton jtb=findViewById(R.id.main_jtb);
         jtb.setOnStateChangeListener(new JellyToggleButton.OnStateChangeListener() {
             @Override
             public void onStateChange(float process, State state, JellyToggleButton jtb) {
                 ConstraintLayout c=findViewById(R.id.main_constra);
-                android.support.v7.widget.Toolbar tb=findViewById(R.id.main_tb);
+                Toolbar tb=findViewById(R.id.main_tb);
                 if (state.equals(State.LEFT)) {
                     tb.setBackground(getDrawable(R.drawable.toolbarcolor1));
                     c.setBackgroundColor(ContextCompat.getColor(MainActivity.this,R.color.backgroundPrimary));
@@ -85,6 +92,21 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case (R.id.CHECK):
+                CHECK();
+                break;
+            case (R.id.SAVE):
+                SAVE();
+                break;
+            case(R.id.EMPTY):
+                EMPTY();
+                break;
+        }
+    }
+
     private void START() {
         Toast.makeText(this,"start",Toast.LENGTH_SHORT).show();
         flag=0;
@@ -103,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void EMPTY(){
-        Toast.makeText(this,"empty",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"EMPTY",Toast.LENGTH_SHORT).show();
         sdb.delete("IP",null,null);
     }
 
@@ -117,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                    values.put("ipstr",ipaddr);
                    values.put("time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()).toString());
                    sdb.insert("IP",null,values);
-                   sleep(5000);
+                   sleep(300000);
                }while (flag==0);
            }
        }).start();
